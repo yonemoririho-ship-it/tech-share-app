@@ -14,5 +14,6 @@
       "updatedAt": "2026-11-10",
       "content": "非同期処理とは、時間のかかる処理の完了を待たずに、ほかの処理を進められる仕組みです。API通信などで利用されます。"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Editor() {
 
@@ -9,17 +10,73 @@ function Editor() {
   // ページ遷移に使用
   const navigate = useNavigate();
 
+  // ログインユーザーを取得
+  const { user } = useAuth();
+
   // 入力内容を管理
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // 投稿処理
-  const handleSubmit = (e) => {
+  // 編集時に既存の記事情報を取得
+  useEffect(() => {
+    if (id) {
+      fetch(`http://localhost:3000/articles/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTitle(data.title);
+          setContent(data.content);
+        });
+    }
+  }, [id]);
+
+  // 投稿・編集の保存処理
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert("記事を保存しました！");
+    // ログイン確認
+    if (!user) {
+      alert("ログインしてください。");
+      return;
+    }
 
-    navigate("/");
+    try {
+      // 編集か新規投稿かを判定
+      const isEdit = Boolean(id);
+
+      const response = await fetch(
+        isEdit
+          ? `http://localhost:3000/articles/${id}`
+          : "http://localhost:3000/articles",
+        {
+          method: isEdit ? "PATCH" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: title,
+            content: content,
+            ...(isEdit ? {} : { author: user.name }),
+            updatedAt: new Date().toLocaleDateString("ja-JP"),
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("記事の保存に失敗しました");
+      }
+
+      if (isEdit) {
+        alert("記事を更新しました！");
+        navigate(`/articles/${id}`);
+      } else {
+        alert("記事を投稿しました！");
+        navigate("/");
+      }
+
+    } catch (error) {
+      alert("記事の保存に失敗しました。");
+      console.error(error);
+    }
   };
 
   return (
