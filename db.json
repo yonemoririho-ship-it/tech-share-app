@@ -13,6 +13,21 @@
       "author": "佐藤花子",
       "updatedAt": "2026/11/13",
       "content": "変更）非同期処理とは、時間のかかる処理の完了を待たずに、ほかの処理を進められる仕組みです。API通信などで利用されます。"
+    },
+    {
+      "title": "タイトルを入力",
+      "content": "# TechShareの使い方\n\n## Reactの学習記録\n\nこれは通常の文章です。\n\n**ここは太字になります。**\n\n- HTML\n- CSS\n- JavaScript\n\n[Google](https://www.google.com)",
+      "author": "Tech Taro",
+      "updatedAt": "2026/11/13",
+      "id": "CkmtzFjSFFA"
+    },
+    {
+      "title": "練習",
+      "content": "# TechShareの使い方\n\n## Reactの学習記録\n\nこれは通常の文章です。\n\n**ここは太字になります。**\n\n- HTML\n- CSS\n- JavaScript\n\n[Google](https://www.google.com)",
+      "author": "Tech Taro",
+      "createdAt": "2026/11/15",
+      "id": "mduFqdb9qyw",
+      "updatedAt": "2026/11/15"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
