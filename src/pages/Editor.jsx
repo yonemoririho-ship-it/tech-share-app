@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { useAuth } from "../contexts/AuthContext";
 
 function Editor() {
 
-  // URLから記事IDを取得
-  const { id } = useParams();
+// URLから記事IDを取得
+const { id } = useParams();
+
+// 編集モードかどうかを判定
+const isEditMode = Boolean(id);
 
   // ページ遷移に使用
   const navigate = useNavigate();
@@ -14,21 +17,38 @@ function Editor() {
   // ログインユーザーを取得
   const { user } = useAuth();
 
+  // 未ログインの場合はトップページへ移動
+  useEffect(() => {
+  if (!user) {
+    navigate("/");
+  }
+  }, [user, navigate]);
+
   // 入力内容を管理
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  // 編集時に既存の記事情報を取得
-  useEffect(() => {
-    if (id) {
-      fetch(`http://localhost:3000/articles/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setTitle(data.title);
-          setContent(data.content);
-        });
-    }
-  }, [id]);
+  // 編集モードのときだけ既存の記事情報を取得
+useEffect(() => {
+  if (isEditMode) {
+    fetch(`http://localhost:3000/articles/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("記事の取得に失敗しました");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setTitle(data.title);
+        setContent(data.content);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("記事の取得に失敗しました。");
+        navigate("/");
+      });
+  }
+  }, [isEditMode, id, navigate]);
 
   // 投稿・編集の保存処理
 const handleSubmit = async (e) => {
@@ -41,42 +61,41 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    const isEdit = Boolean(id);
 
     // APIに送信するデータ
     const articleData = {
       title: title,
       content: content,
       author: user.name,
-      ...(isEdit
-        ? { updatedAt: new Date().toLocaleDateString("ja-JP") }
-        : { createdAt: new Date().toLocaleDateString("ja-JP") }),
+      ...(isEditMode
+  ? { updatedAt: new Date().toLocaleDateString("ja-JP") }
+  : { createdAt: new Date().toLocaleDateString("ja-JP") }),
     };
 
     const response = await fetch(
-      isEdit
-        ? `http://localhost:3000/articles/${id}`
-        : "http://localhost:3000/articles",
-      {
-        method: isEdit ? "PATCH" : "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(articleData),
-      }
-    );
+  isEditMode
+    ? `http://localhost:3000/articles/${id}`
+    : "http://localhost:3000/articles",
+  {
+    method: isEditMode ? "PATCH" : "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(articleData),
+  }
+);
 
     if (!response.ok) {
       throw new Error("記事の保存に失敗しました");
     }
 
-    if (isEdit) {
-      alert("記事を更新しました！");
-      navigate(`/articles/${id}`);
-    } else {
-      alert("記事を投稿しました！");
-      navigate("/");
-    }
+ if (isEditMode) {
+  alert("記事を更新しました！");
+  navigate("/");
+} else {
+  alert("記事を投稿しました！");
+  navigate("/");
+}
 
   } catch (error) {
     alert("記事の保存に失敗しました。");
@@ -90,7 +109,7 @@ const handleSubmit = async (e) => {
     <div className="bg-white p-8 rounded-xl shadow">
 
       <h1 className="text-2xl font-bold mb-6">
-        {id ? "記事を編集する" : "記事を投稿する"}
+      {isEditMode ? "記事の編集" : "記事を投稿する"}
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -152,7 +171,7 @@ const handleSubmit = async (e) => {
   type="submit"
   className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600"
 >
-  投稿する
+{isEditMode ? "更新する" : "投稿する"}
 </button>
 
           <button

@@ -18,7 +18,7 @@
       "title": "タイトルを入力",
       "content": "# TechShareの使い方\n\n## Reactの学習記録\n\nこれは通常の文章です。\n\n**ここは太字になります。**\n\n- HTML\n- CSS\n- JavaScript\n\n[Google](https://www.google.com)",
       "author": "Tech Taro",
-      "updatedAt": "2026/11/13",
+      "updatedAt": "2026/11/15",
       "id": "CkmtzFjSFFA"
     },
     {
@@ -27,6 +27,14 @@
       "author": "Tech Taro",
       "createdAt": "2026/11/15",
       "id": "mduFqdb9qyw",
+      "updatedAt": "2026/11/15"
+    },
+    {
+      "title": "変更）新しいタイトル",
+      "content": "変更）新しい本文",
+      "author": "Tech Taro",
+      "createdAt": "2026/11/15",
+      "id": "0qdWHYgvwSM",
       "updatedAt": "2026/11/15"
     }
   ],

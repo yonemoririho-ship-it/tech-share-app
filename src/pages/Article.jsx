@@ -124,8 +124,8 @@ function Article() {
       </p>
 
       <p className="text-gray-500 mb-6">
-        作成日：{article.updatedAt}
-      </p>
+  作成日：{article.createdAt}
+</p>
 
       {/* Markdown形式で本文を表示 */}
       <div className="prose max-w-none text-gray-700 mb-8">
