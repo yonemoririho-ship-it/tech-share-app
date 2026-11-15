@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { useAuth } from "../contexts/AuthContext";
 
-function Editor() {
+function Editor({ user }) {
 
 // URLから記事IDを取得
 const { id } = useParams();
@@ -13,9 +12,6 @@ const isEditMode = Boolean(id);
 
   // ページ遷移に使用
   const navigate = useNavigate();
-
-  // ログインユーザーを取得
-  const { user } = useAuth();
 
   // 未ログインの場合はトップページへ移動
   useEffect(() => {
@@ -150,17 +146,17 @@ const handleSubmit = async (e) => {
   </div>
 
   {/* 右側：プレビュー */}
-  <div>
-    <h2 className="block font-bold mb-2">
-      プレビュー
-    </h2>
+<div>
+  <h2 className="block font-bold mb-2">
+    プレビュー
+  </h2>
 
-    <div className="w-full min-h-96 border border-gray-300 rounded p-4 bg-gray-50">
-      <ReactMarkdown>
-        {content}
-      </ReactMarkdown>
-    </div>
+  <div className="w-full min-h-96 border border-gray-300 rounded p-4 bg-gray-50 markdown-preview">
+    <ReactMarkdown>
+      {content}
+    </ReactMarkdown>
   </div>
+</div>
 
 </div>
 

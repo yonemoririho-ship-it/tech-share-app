@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { useAuth } from "../contexts/AuthContext";
 
-function Article() {
+function Article({ user }) {
 
   // URLから記事IDを取得
   const { id } = useParams();
 
   // ページ遷移に使用
   const navigate = useNavigate();
-
-  // ログイン情報を取得
-  const { user } = useAuth();
 
   // 記事情報を管理するState
   const [article, setArticle] = useState(null);

@@ -16,3 +16,69 @@ body {
 button {
   cursor: pointer;
 }
+
+/* Markdownプレビュー */
+
+/* 見出し */
+.markdown-preview h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.markdown-preview h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.markdown-preview h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+
+/* 段落 */
+.markdown-preview p {
+  margin-bottom: 1rem;
+}
+
+/* 箇条書き */
+.markdown-preview ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 番号付きリスト */
+.markdown-preview ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 引用 */
+.markdown-preview blockquote {
+  border-left: 4px solid #9ca3af;
+  padding-left: 1rem;
+  color: #6b7280;
+  margin: 1rem 0;
+}
+
+/* コードブロック */
+.markdown-preview pre {
+  background-color: #1f2937;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* インラインコード */
+.markdown-preview :not(pre) > code {
+  background-color: #e5e7eb;
+  color: #333;
+  padding: 2px 4px;
+  border-radius: 4px;
+}

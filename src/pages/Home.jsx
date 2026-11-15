@@ -103,7 +103,7 @@ function Home() {
               </p>
 
               <p className="text-sm text-gray-500 mb-3">
-                作成日：{article.updatedAt}
+                作成日：{article.createdAt}
               </p>
 
               <p className="text-gray-700">

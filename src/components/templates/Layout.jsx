@@ -1,10 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
 
-function Layout() {
-
-  // 認証情報を取得
-  const { user, login, logout } = useAuth();
+function Layout({ user, login, logout }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
