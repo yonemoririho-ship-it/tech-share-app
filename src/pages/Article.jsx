@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { useAuth } from "../contexts/AuthContext";
 
-function Article({ user }) {
+function Article() {
+
+  // Contextから認証情報を取得
+  const { user } = useAuth();
 
   // URLから記事IDを取得
   const { id } = useParams();

@@ -5,11 +5,8 @@ function Home() {
   // 記事一覧を管理するState
   const [articles, setArticles] = useState([]);
 
-  // 検索フォームの入力値
-  const [keyword, setKeyword] = useState("");
-
-  // 実際に検索するキーワード
-  const [searchWord, setSearchWord] = useState("");
+  // 検索ワードを管理するState
+  const [searchQuery, setSearchQuery] = useState("");
 
   // コンポーネント表示時に記事を取得する
   useEffect(() => {
@@ -20,22 +17,16 @@ function Home() {
       });
   }, []);
 
-  // 検索処理
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearchWord(keyword.trim());
-  };
-
   // 検索結果を絞り込む
   const filteredArticles = articles.filter((article) => {
-    const word = searchWord.toLowerCase();
+  const word = searchQuery.toLowerCase();
 
-    return (
-      article.title.toLowerCase().includes(word) ||
-      article.author.toLowerCase().includes(word) ||
-      article.content.toLowerCase().includes(word)
-    );
-  });
+  return (
+    article.title.toLowerCase().includes(word) ||
+    article.content.toLowerCase().includes(word)
+  );
+});
+
 
   return (
     <div className="space-y-6">
@@ -52,22 +43,15 @@ function Home() {
       </div>
 
       {/* 検索フォーム */}
-      <form onSubmit={handleSearch} className="flex gap-2">
-        <input
-          type="text"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-          placeholder="記事を検索..."
-          className="flex-1 border border-gray-300 rounded-lg px-4 py-2"
-        />
-
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600"
-        >
-          検索
-        </button>
-      </form>
+<div>
+  <input
+    type="text"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    placeholder="記事を検索..."
+    className="w-full border border-gray-300 rounded-lg px-4 py-2"
+  />
+</div>
 
       {/* 記事作成ボタン */}
       <div>
@@ -116,9 +100,9 @@ function Home() {
 
         {/* 検索結果がない場合 */}
         {filteredArticles.length === 0 && (
-          <p className="text-gray-500 text-center py-8">
-            該当する記事が見つかりませんでした。
-          </p>
+        <p className="text-gray-500 text-center py-8">
+        記事が見つかりません
+        </p>
         )}
 
       </div>

@@ -1,6 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
-function Layout({ user, login, logout }) {
+function Layout() {
+
+  // Contextから認証情報を取得
+  const { user, login, logout } = useAuth();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -20,8 +24,15 @@ function Layout({ user, login, logout }) {
             {user ? (
               <>
                 <span className="text-gray-700">
-                  {user.name}
+                  ようこそ、{user.name}さん
                 </span>
+
+                <Link
+                  to="/create"
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                >
+                  記事を書く
+                </Link>
 
                 <button
                   onClick={logout}

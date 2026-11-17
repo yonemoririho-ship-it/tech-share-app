@@ -51,6 +51,13 @@
       "author": "Tech Taro",
       "createdAt": "2026/11/15",
       "id": "U33AAItZ_vI"
+    },
+    {
+      "title": "たろう日記",
+      "content": "たろう日記",
+      "author": "Tech Taro",
+      "createdAt": "2026/11/15",
+      "id": "IoNRHU-LXFo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
