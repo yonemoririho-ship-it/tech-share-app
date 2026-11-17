@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useSearch from "../hooks/useSearch";
 
 function Home() {
   // 記事一覧を管理するState
   const [articles, setArticles] = useState([]);
-
-  // 検索ワードを管理するState
-  const [searchQuery, setSearchQuery] = useState("");
 
   // コンポーネント表示時に記事を取得する
   useEffect(() => {
@@ -17,17 +15,8 @@ function Home() {
       });
   }, []);
 
-  // 検索結果を絞り込む
-  const filteredArticles = articles.filter((article) => {
-  const word = searchQuery.toLowerCase();
-
-  return (
-    article.title.toLowerCase().includes(word) ||
-    article.content.toLowerCase().includes(word)
-  );
-});
-
-
+   // 検索機能をカスタムフックから取得
+  const { searchQuery, setSearchQuery, filteredArticles } = useSearch(articles);
   return (
     <div className="space-y-6">
 
@@ -101,7 +90,7 @@ function Home() {
         {/* 検索結果がない場合 */}
         {filteredArticles.length === 0 && (
         <p className="text-gray-500 text-center py-8">
-        記事が見つかりません
+        記事が見つかりません。
         </p>
         )}
 
