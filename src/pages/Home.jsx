@@ -2,21 +2,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useSearch from "../hooks/useSearch";
 
+// API接続先
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Home() {
   // 記事一覧を管理するState
   const [articles, setArticles] = useState([]);
 
   // コンポーネント表示時に記事を取得する
   useEffect(() => {
-    fetch("http://localhost:3000/articles")
+    fetch(`${API_URL}/articles`)
       .then((res) => res.json())
       .then((data) => {
         setArticles(data);
       });
   }, []);
 
-   // 検索機能をカスタムフックから取得
+  // 検索機能をカスタムフックから取得
   const { searchQuery, setSearchQuery, filteredArticles } = useSearch(articles);
+
   return (
     <div className="space-y-6">
 
@@ -32,15 +36,15 @@ function Home() {
       </div>
 
       {/* 検索フォーム */}
-<div>
-  <input
-    type="text"
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    placeholder="記事を検索..."
-    className="w-full border border-gray-300 rounded-lg px-4 py-2"
-  />
-</div>
+      <div>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="記事を検索..."
+          className="w-full border border-gray-300 rounded-lg px-4 py-2"
+        />
+      </div>
 
       {/* 記事作成ボタン */}
       <div>
@@ -89,9 +93,9 @@ function Home() {
 
         {/* 検索結果がない場合 */}
         {filteredArticles.length === 0 && (
-        <p className="text-gray-500 text-center py-8">
-        記事が見つかりません。
-        </p>
+          <p className="text-gray-500 text-center py-8">
+            記事が見つかりません。
+          </p>
         )}
 
       </div>

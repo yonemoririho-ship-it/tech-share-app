@@ -3,6 +3,9 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { useAuth } from "../contexts/AuthContext";
 
+// API接続先
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Article() {
 
   // Contextから認証情報を取得
@@ -27,7 +30,7 @@ function Article() {
       try {
 
         const response = await fetch(
-          `http://localhost:3000/articles/${id}`
+          `${API_URL}/articles/${id}`
         );
 
         if (!response.ok) {
@@ -69,7 +72,7 @@ function Article() {
     try {
 
       const response = await fetch(
-        `http://localhost:3000/articles/${id}`,
+        `${API_URL}/articles/${id}`,
         {
           method: "DELETE",
         }
@@ -124,8 +127,8 @@ function Article() {
       </p>
 
       <p className="text-gray-500 mb-6">
-  作成日：{article.createdAt}
-</p>
+        作成日：{article.createdAt}
+      </p>
 
       {/* Markdown形式で本文を表示 */}
       <div className="prose max-w-none text-gray-700 mb-8">
