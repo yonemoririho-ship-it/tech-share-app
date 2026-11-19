@@ -2,62 +2,42 @@
   "articles": [
     {
       "id": "1",
-      "title": "Reactの基礎について",
-      "author": "山田太郎",
-      "updatedAt": "2026-11-11",
-      "content": "Reactは、Webサイトの画面を作成するためのJavaScriptライブラリです。コンポーネントという部品を組み合わせて画面を作ります。"
+      "title": "React Hooksの完全理解",
+      "author": "Tech Taro",
+      "createdAt": "2026-05-14",
+      "updatedAt": "2026-05-14",
+      "content": "## React Hooksとは\n\nReactで状態管理や副作用を扱うための仕組みです。\n\n### useEffectについて\n\nuseEffectは、コンポーネントの副作用を扱うためのフックです。\n\n- useStateで状態を管理する\n- useEffectで副作用を扱う\n- reactを使って画面を構築する"
     },
     {
       "id": "2",
-      "title": "変更）JavaScriptの非同期処理について",
-      "author": "佐藤花子",
-      "updatedAt": "2026/11/13",
-      "content": "変更）非同期処理とは、時間のかかる処理の完了を待たずに、ほかの処理を進められる仕組みです。API通信などで利用されます。"
-    },
-    {
-      "title": "タイトルを入力",
-      "content": "# TechShareの使い方\n\n## Reactの学習記録\n\nこれは通常の文章です。\n\n**ここは太字になります。**\n\n- HTML\n- CSS\n- JavaScript\n\n[Google](https://www.google.com)",
-      "author": "Tech Taro",
-      "updatedAt": "2026/11/15",
-      "id": "CkmtzFjSFFA"
-    },
-    {
-      "title": "練習",
-      "content": "# TechShareの使い方\n\n## Reactの学習記録\n\nこれは通常の文章です。\n\n**ここは太字になります。**\n\n- HTML\n- CSS\n- JavaScript\n\n[Google](https://www.google.com)",
-      "author": "Tech Taro",
-      "createdAt": "2026/11/15",
-      "id": "mduFqdb9qyw",
-      "updatedAt": "2026/11/15"
+      "title": "Tailwind CSSで爆速コーディング",
+      "author": "Front Engineer",
+      "createdAt": "2026-05-15",
+      "updatedAt": "2026-05-15",
+      "content": "Tailwind CSSを使うと、ユーティリティクラスを組み合わせて効率よくスタイリングできます。"
     },
     {
       "title": "変更）新しいタイトル",
       "content": "変更）新しい本文",
       "author": "Tech Taro",
-      "createdAt": "2026/11/15",
+      "createdAt": "2026-11-15",
       "id": "0qdWHYgvwSM",
-      "updatedAt": "2026/11/15"
+      "updatedAt": "2026-11-15"
     },
     {
       "title": "変更）マークダウン形式テスト",
-      "content": "## useStateとは\n\n状態を管理するためのフックです。\n\n### useEffectとは\n\n副作用を扱うためのフックです。API通信などで使います。\n\n- データ取得\n- API通信\n- イベント処理\n\n```javascript\nconsole.log('Hello World');",
+      "content": "## useStateとは\n\n状態を管理するためのフックです。\n\n### useEffectとは\n\n副作用を扱うためのフックです。API通信などで使います。\n\n- データ取得\n- API通信\n- イベント処理\n\n```javascript\nconsole.log('Hello World');\n```",
       "author": "Tech Taro",
-      "createdAt": "2026/11/15",
+      "createdAt": "2026-11-15",
       "id": "GTU3Kpmy_Vo",
-      "updatedAt": "2026/11/15"
+      "updatedAt": "2026-11-15"
     },
     {
       "title": "日付確認",
       "content": "日付の確認",
       "author": "Tech Taro",
-      "createdAt": "2026/11/15",
+      "createdAt": "2026-11-15",
       "id": "U33AAItZ_vI"
-    },
-    {
-      "title": "たろう日記",
-      "content": "たろう日記",
-      "author": "Tech Taro",
-      "createdAt": "2026/11/15",
-      "id": "IoNRHU-LXFo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
