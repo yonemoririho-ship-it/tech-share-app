@@ -131,7 +131,7 @@ function Article() {
       </p>
 
       {/* Markdown形式で本文を表示 */}
-      <div className="prose max-w-none text-gray-700 mb-8">
+      <div className="markdown-preview text-gray-700 mb-8">
         <ReactMarkdown>
           {article.content}
         </ReactMarkdown>

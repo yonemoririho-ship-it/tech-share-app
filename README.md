@@ -30,7 +30,8 @@ If you are developing a production application, we recommend using TypeScript wi
                  キーワードによる記事の絞り込み
         ・Markdown対応
                  Markdown形式で記事を作成・編集
-                  記事本文を読みやすく表示
+                 記事作成時のリアルタイムプレビュー
+                 記事本文を読みやすく表示
 
     //アプリの目的
         ・学習した技術や知識を記録する

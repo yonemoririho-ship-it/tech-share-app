@@ -17,20 +17,20 @@
       "content": "Tailwind CSSを使うと、ユーティリティクラスを組み合わせて効率よくスタイリングできます。"
     },
     {
-      "title": "変更）新しいタイトル",
-      "content": "変更）新しい本文",
+      "title": "新しいタイトル",
+      "content": "新しい本文",
       "author": "Tech Taro",
       "createdAt": "2026-11-15",
       "id": "0qdWHYgvwSM",
-      "updatedAt": "2026-11-15"
+      "updatedAt": "2026/11/19"
     },
     {
-      "title": "変更）マークダウン形式テスト",
+      "title": "マークダウン形式テスト",
       "content": "## useStateとは\n\n状態を管理するためのフックです。\n\n### useEffectとは\n\n副作用を扱うためのフックです。API通信などで使います。\n\n- データ取得\n- API通信\n- イベント処理\n\n```javascript\nconsole.log('Hello World');\n```",
       "author": "Tech Taro",
       "createdAt": "2026-11-15",
       "id": "GTU3Kpmy_Vo",
-      "updatedAt": "2026-11-15"
+      "updatedAt": "2026/11/19"
     },
     {
       "title": "日付確認",
